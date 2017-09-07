@@ -1,0 +1,67 @@
+package nl.hva.dmci.ict.se.datastructures.fibonacci;
+
+import java.math.BigInteger;
+
+import edu.princeton.cs.algs4.Stopwatch;
+
+/**
+ * A small program that calculates Fibonacci numbers.
+ * This program is used by students to investigate the Fibonacci algorithm.
+ * @version Bram-Fibonator.3000
+ * Dit is de betere versie van de fibonator
+ * @author Huub van Thienen
+ * @author Nico Tromp
+ */
+public class OriginalFibonacci {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        final int SIZE;
+        BigInteger previous, next, result;
+        previous = new BigInteger("1");
+    	next = new BigInteger("0");
+    	result = new BigInteger("0");
+        
+        if (args.length == 0) {
+            SIZE = 10000;
+        } else {
+            SIZE = Integer.parseInt(args[0]);
+        }
+
+        Stopwatch stopwatch = new Stopwatch();
+
+        System.out.printf(" n %15s  (  lap \t total)\n", "fib(n)");
+        for (int n = 1; n <= SIZE; n++) {
+            double timeStart = stopwatch.elapsedTime();
+            result = previous.add(next);
+        	previous = next;
+        	next = result;
+        	double timeEnd = stopwatch.elapsedTime();
+            double lapTime = timeEnd - timeStart;
+            System.out.printf("%2d %15d  (%.3f \t %.3f)\n", n, result, lapTime, timeEnd);
+        }
+    }
+
+    /**
+     * Berekent het n-de Fibonacci-getal.
+     * 
+     * @param n Het hoeveelste Fibonacci-getal
+     * @return De waarde van het Fibonacco-getal
+     */
+//    public static BigInteger fib(int n) {
+//    	BigInteger previous, next, result;
+//    	previous = new BigInteger("1");
+//    	next = new BigInteger("0");
+//    	result = new BigInteger("0");
+//    	
+//    	for(int i = 0; i<n; i++) {
+//    	result = previous.add(next);
+//    	previous = next;
+//    	next = result;
+//    	}
+//    	return result;
+//    }
+}
